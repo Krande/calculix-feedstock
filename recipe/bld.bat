@@ -1,11 +1,11 @@
 cd ccx*/src
 del Makefile_MT
+del date.pl
 copy %RECIPE_DIR%\Makefile_MT Makefile_MT
 copy %RECIPE_DIR%\date.pl date.pl
 
-
-rem this line translates the windows-paths to paths understandable for the mingw env
-rem -m, --mixed           like --windows, but with regular slashes (C:/WINNT)
+REM Replace all backslashes with forward slashes
+set "LIBRARY_PREFIX=%LIBRARY_PREFIX:\=/%"
 
 make -f Makefile_MT ^
     SPOOLES_INCLUDE_DIR="%LIBRARY_PREFIX%/include/spooles" ^
